@@ -82,9 +82,8 @@ void playMelody() {
         double freq[8] = {261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25};
         unsigned int numNotes = 7;
         unsigned int melody[7] =  {0,1,2,0,2,0,2};
-        unsigned int timeHeld[7] = {1,1,1,1,1,1,1};
-        unsigned int timeBetween[6] = {1,1,1,1,1,1};
-	//unsigned int timeBetween[6] = {1,0,1,0,1,0};
+        unsigned int timeHeld[7] = {3,3,3,3,3,3,3};
+        unsigned int timeBetween[6] = {3,3,3,3,3,3};
         static unsigned int count = 0;
         static unsigned int note = 0;
         static unsigned char playWait = 0;
@@ -121,11 +120,6 @@ void playMelody() {
 			count = 0;
                 }
         }
-	if(note == 5) {
-		PORTB |= 0x01;
-	}
-	else
-		PORTB &= 0xFE;
 }
 
 enum O_STATES { O_Start, O_Wait, O_On } O_State;
@@ -166,7 +160,7 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0x00; PORTA = 0xFF;
 	DDRB = 0xFF; PORTB = 0x00;
-	TimerSet(300);
+	TimerSet(100);
 	TimerOn();
 	O_State = O_Start;
 	PWM_on();
