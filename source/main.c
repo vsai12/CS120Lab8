@@ -84,7 +84,7 @@ void playMelody() {
         unsigned int melody[7] =  {0,1,2,0,2,0,2};
         unsigned int timeHeld[7] = {1,1,1,1,1,1,1};
         unsigned int timeBetween[6] = {1,1,1,1,1,1};
-	//unsigned int timeBetween[6] = {0,0,0,0,0,0};
+	//unsigned int timeBetween[6] = {1,0,1,0,1,0};
         static unsigned int count = 0;
         static unsigned int note = 0;
         static unsigned char playWait = 0;
@@ -117,6 +117,7 @@ void playMelody() {
                 if(count == timeBetween[note]) {
                         playWait = 0;
                         ++note;
+			count = 0;
                 }
         }
 	if(note == 5) {
@@ -162,7 +163,7 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0x00; PORTA = 0xFF;
 	DDRB = 0xFF; PORTB = 0x00;
-	TimerSet(1000);
+	TimerSet(300);
 	TimerOn();
 	O_State = O_Start;
 	PWM_on();
