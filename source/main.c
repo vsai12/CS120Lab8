@@ -108,6 +108,7 @@ void playMelody() {
                         else {
                                 playing = 0;
                                 note = 0;
+				set_PWM(0);
                         }
                 }
         }
@@ -155,7 +156,9 @@ void OSwitch() {
 		case O_Wait:
 			break;
 		case O_On:
-			playMelody();
+			if(playing)
+				playMelody();
+			break;
 	}
 }
 
@@ -169,8 +172,8 @@ int main(void) {
 	PWM_on();
     /* Insert your solution below */
     while (1) {
-	    //OSwitch();
-	    playMelody();
+	    OSwitch();
+	    //playMelody();
 	    while(!TimerFlag);
 	    TimerFlag = 0;
     }
