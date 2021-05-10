@@ -80,10 +80,10 @@ void PWM_off() {
 unsigned char playing = 0;
 void playMelody() {
         double freq[8] = {261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25};
-        unsigned int numNotes = 7;
-        unsigned int melody[7] =  {0,1,2,0,2,0,2};
-        unsigned int timeHeld[7] = {3,3,3,3,3,3,3};
-        unsigned int timeBetween[6] = {3,3,3,3,3,3};
+        unsigned int numNotes = 38;
+        unsigned int melody[38] =   {0,1,2,1,0,2,1,0,0,1,2,4,4,2,1,0,2,1,0,1,2,3,2,1,0,2,1,0,0,2,4,4,2,2,1,0,1,0};
+        unsigned int timeHeld[38] = {6,3,6,3,5,3,3,6,6,3,4,3,5,3,3,3,3,5,6,3,3,3,3,4,6,3,3,6,6,3,4,4,3,3,3,3,3,3};
+        unsigned int timeBetween[37] = {1,1,1,1,1,1,1,6,1,1,1,1,1,1,1,1,1,6,1,1,1,1,1,1,1,1,1,6,1,1,1,5,1,1,1,1,1};
         static unsigned int count = 0;
         static unsigned int note = 0;
         static unsigned char playWait = 0;
@@ -160,7 +160,7 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0x00; PORTA = 0xFF;
 	DDRB = 0xFF; PORTB = 0x00;
-	TimerSet(100);
+	TimerSet(50);
 	TimerOn();
 	O_State = O_Start;
 	PWM_on();
